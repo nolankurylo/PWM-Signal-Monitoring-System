@@ -12,5 +12,5 @@ read the generated frequency of the incoming PWM signal from the NE555 Timer. Fu
 the microcontroller needed to output the potentiometer’s resistance and the NE555 Timer’s
 PWM frequency to a liquid crystal display (LCD) module in real time.
 
-
+The following schematic outlines the configuration of the peripherals to the microcontroller:
 ![image](https://user-images.githubusercontent.com/44009838/117380032-b11cab80-ae8d-11eb-8252-965020006993.png)
