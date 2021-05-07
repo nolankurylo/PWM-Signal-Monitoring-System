@@ -14,3 +14,9 @@ PWM frequency to a liquid crystal display (LCD) module in real time.
 
 The following schematic outlines the configuration of the peripherals to the microcontroller:
 ![image](https://user-images.githubusercontent.com/44009838/117380032-b11cab80-ae8d-11eb-8252-965020006993.png)
+
+The following block diagram outlines the internal component structure of the embedded system:
+![image](https://user-images.githubusercontent.com/44009838/117380157-f7720a80-ae8d-11eb-9975-2af24d1c810f.png)
+
+The following block diagram outlines the main program's architecture:
+![image](https://user-images.githubusercontent.com/44009838/117380210-0f498e80-ae8e-11eb-87c0-c22f70171a41.png)
