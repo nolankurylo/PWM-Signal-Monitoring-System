@@ -27,7 +27,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #pragma GCC diagnostic ignored "-Wmissing-declarations"
-- 2 -
+
 #pragma GCC diagnostic ignored "-Wreturn-type"
 /* Clock prescaler for TIM2 timer: no prescaling */
 #define myTIM_PRESCALER ((uint16_t)0x0000)
@@ -57,7 +57,7 @@ volatile float freq = 0;
 int main(int argc, char* argv[])
 {
  trace_printf("Nolan Kurylo's ECE355 Lab Project\n");
-- 3 -
+
  myGPIOA_Init();
  myGPIOB_Init();
  myGPIOC_Init();
@@ -90,7 +90,7 @@ void myGPIOA_Init() /* Inits PA4->4N35 Optocoupler and PA1->NE555 Timer */
 void myGPIOB_Init()/* Inits 8-Bit Parallel Interface for LCD Display*/
 {
  /* Enable clock for GPIOAB peripheral */
-- 4 -
+
  RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
  /* Configure PB4-15 as output PB7 as as input (AF) */
  GPIOB->MODER = (GPIO_MODER_MODER4_0 |
@@ -127,7 +127,7 @@ void myGPIOC_Init() /* Inits PC1->Potentiometer */
  GPIOC->MODER &= ~(GPIO_MODER_MODER1);
  /* Ensure no pull-up/pull-down for PC1 */
  GPIOC->PUPDR &= ~(GPIO_PUPDR_PUPDR1);
-- 5 -
+
 }
 void myTIM2_Init() /* Inits TIM2 for count between NE555 Timer PWM signals */
 {
@@ -161,7 +161,7 @@ void myTIM3_Init() /* Inits TIM3 for LCD refresh rate delays */
  /* Set auto-reloaded delay */
  TIM3->ARR = myTIM_PERIOD;
  /* Update timer registers */
-- 6 -
+
  TIM3->EGR = ((uint16_t)0x0001);
 }
 void myLCD_Init() /* Inits LCD peripheral*/
@@ -195,7 +195,7 @@ void myADC_Init() /* Inits ADC for input potentiometer voltage */
  ADC1->CR |= ADC_CR_ADCAL; // begin ADC calibration
  while(ADC1->CR == ADC_CR_ADCAL); // wait for ADC to calibrate
  ADC1->CR |= ADC_CR_ADEN; // enable ADC
-- 7 -
+
  while((ADC1->CR & ADC_ISR_ADRDY) == 0); // wait for ADC ready
  ADC1->CR |= ADC_CR_ADSTART; // start ADC
 }
@@ -228,7 +228,7 @@ void EXTI0_1_IRQHandler()
  TIM2->CR1 |= TIM_CR1_CEN; // Start timer
  risingEdge = 1; // set boolean for first rising edge
  }
-- 8 -
+
  else if(risingEdge == 1){ // if this is the second edge
  risingEdge = 0; // reset edge boolean
  TIM2->CR1 &= ~(TIM_CR1_CEN); // Stop timer
@@ -262,7 +262,7 @@ int getADC() /* Waits until ADC value is obtained and returns it */
  while((ADC1->ISR & ADC_ISR_EOC) == 0);// wait until ADC is done converting
  int adc_value = ADC1->DR; // store adc value
  return adc_value;
-- 9 -
+
 }
 void writeDAC(int adc_value) /* Writes ADC value directly to DAC*/
 {
@@ -293,7 +293,7 @@ lower 8 bits (0x20) */
  writeLCD(freq_one);// XXX#
  writeLCD(0x4820); // H
  writeLCD(0x7A20); // z
-- 10 -
+
  /* Print resistance on second line */
  /* Isolate each digit, convert from ASCII to HEX (add 0x30 to digit), shift HEX digit to upper 8 bits, append
 data/write in lower 8 bits (0x20) */
